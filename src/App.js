@@ -17,7 +17,7 @@ function App() {
           const response = await fetch(`${backendURL}/new-game`, { method: 'POST' });
           const data = await response.json();
           setCards({ cardA: data.cardA, cardB: data.cardB });
-          setResult('New game started! Place your bet.');
+          setResult('Nuevo juego ha comenzado! Haga su apuesta');
           setIsGameStarted(true);
       } catch (error) {
           console.error('Error starting game:', error);
@@ -33,8 +33,8 @@ function App() {
               body: JSON.stringify({ userBet: bet })
           });
           const data = await response.json();
-          setResult(`You bet on ${data.userBet}. ${data.message} 
-                     The result was: ${data.result}. Card A: ${data.cardA}, Card B: ${data.cardB}.`);
+          setResult(`Tu apuesta: ${data.userBet}. ${data.message} 
+                     El resultado es: ${data.result}. Card A: ${data.cardA}, Card B: ${data.cardB}.`);
           setIsGameStarted(false);
       } catch (error) {
           console.error('Error placing bet:', error);
